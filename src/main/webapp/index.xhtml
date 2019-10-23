@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w2.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:head>
+		<!-- http-equiv="Content-Type" content="text/html; charset=utf-8" -->
+		<meta charset="utf-8"/>
+		<title>Test project</title>
+	</h:head>
+	
+	<h:body>
+		<h1>Test project</h1>
+		<p>Welcome on this test project !</p>
+		<b:container fluid="true">
+			<b:row>
+				<b:column>
+					<b:dataTable value="#{libraryController.books}" var="l">
+						<b:dataTableColumn value="#{l.idBook}"/>
+						<b:dataTableColumn value="#{l.title}"/>
+					</b:dataTable>
+				</b:column>
+			</b:row>
+		</b:container>
+	</h:body>
+</html>
