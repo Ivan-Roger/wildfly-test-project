@@ -12,8 +12,10 @@ public interface IBookLocal {
 	public Book createBook(Book book);
 	
 	public Book getBookById(Long bookId);
-	
+
 	public List<Book> findBooks();
+	
+	public List<Book> findBooksWithAuthors();
 	
 	public Book updateBook(Book book);
 	

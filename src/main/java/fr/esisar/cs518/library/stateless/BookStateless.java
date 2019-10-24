@@ -30,6 +30,11 @@ public class BookStateless implements IBookLocal {
 		return q.getResultList();
 	}
 
+	public List<Book> findBooksWithAuthors() {
+		TypedQuery<Book> q = em.createNamedQuery("findBooksWithAuthors", Book.class);
+		return q.getResultList();
+	}
+
 	public Book updateBook(Book book) {
 		return em.merge(book);
 	}

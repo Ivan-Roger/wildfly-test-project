@@ -23,12 +23,16 @@ public class Library {
 		return bookInterface.findBooks();
 	}
 	
+	public List<Book> findBooksWithAuthors() {
+		return bookInterface.findBooksWithAuthors();
+	}
+	
 	public List<Author> findAuthors() {
 		return authorInterface.findAuthors();
 	}
 	
-	public List<Author> findAuthorsAndBooks() {
-		return authorInterface.findAuthorsAndBooks();
+	public List<Author> findAuthorsWithBooks() {
+		return authorInterface.findAuthorsWithBooks();
 	}
 	
 }

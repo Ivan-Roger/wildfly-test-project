@@ -1,18 +1,20 @@
 package fr.esisar.cs518.library.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "findBooks", query = "SELECT b FROM Book b")
+	@NamedQuery(name = "findBooks", query = "SELECT b FROM Book b"),
+	@NamedQuery(name = "findBooksWithAuthors", query = "SELECT DISTINCT b FROM Book b LEFT JOIN FETCH b.authors")
 })
 public class Book implements Serializable {
 	private static final long serialVersionUID = 3073713518399100981L;
@@ -24,25 +26,25 @@ public class Book implements Serializable {
 	
 	private String title;
 	
-	@ManyToOne
-	private Author author;
+	@ManyToMany(mappedBy="books")
+	private List<Author> authors;
 	
 	// ------- Constructors -------
 	public Book() {
 		super();
 	}
 
-	public Book(Long idBook, String title, Author author) {
+	public Book(Long idBook, String title, List<Author> authors) {
 		super();
 		this.idBook = idBook;
 		this.title = title;
-		this.author = author;
+		this.authors = authors;
 	}
 
-	public Book(String title, Author author) {
+	public Book(String title, List<Author> authors) {
 		super();
 		this.title = title;
-		this.author = author;
+		this.authors = authors;
 	}
 	
 	// ------- Getters & Setters -------
@@ -62,12 +64,12 @@ public class Book implements Serializable {
 		this.title = title;
 	}
 
-	public Author getAuthor() {
-		return author;
+	public List<Author> getAuthors() {
+		return authors;
 	}
 
-	public void setAuthor(Author author) {
-		this.author = author;
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
 	}
 
 	// ------- Object methods -------

@@ -15,7 +15,7 @@ public interface IAuthorLocal {
 
 	public List<Author> findAuthors();
 	
-	public List<Author> findAuthorsAndBooks();
+	public List<Author> findAuthorsWithBooks();
 	
 	public Author updateAuthor(Author author);
 	

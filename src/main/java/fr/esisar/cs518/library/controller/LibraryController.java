@@ -26,7 +26,7 @@ public class LibraryController implements Serializable {
 	private List<Author> authors;
 
 	public List<Book> getBooks() {
-		return library.findBooks();
+		return library.findBooksWithAuthors();
 	}
 
 	public void setBooks(List<Book> books) {
@@ -34,7 +34,7 @@ public class LibraryController implements Serializable {
 	}
 
 	public List<Author> getAuthors() {
-		return library.findAuthorsAndBooks();
+		return library.findAuthorsWithBooks();
 	}
 
 	public void setAuthors(List<Author> authors) {

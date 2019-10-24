@@ -7,14 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "findAuthors", query = "SELECT a FROM Author a"),
-	@NamedQuery(name = "findAuthorsAndBooks", query = "SELECT DISTINCT a FROM Author a LEFT JOIN FETCH a.books")
+	@NamedQuery(name = "findAuthorsWithBooks", query = "SELECT DISTINCT a FROM Author a LEFT JOIN FETCH a.books")
 })
 public class Author implements Serializable {
 	private static final long serialVersionUID = -9047781109105291658L;
@@ -28,7 +28,7 @@ public class Author implements Serializable {
 	
 	private String lastName;
 
-	@OneToMany(mappedBy="author")
+	@ManyToMany
 	private List<Book> books;
 
 	// ------- Constructors -------

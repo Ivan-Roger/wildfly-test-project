@@ -30,8 +30,8 @@ public class AuthorStateless implements IAuthorLocal {
 		return q.getResultList();
 	}
 
-	public List<Author> findAuthorsAndBooks() {
-		TypedQuery<Author> q = em.createNamedQuery("findAuthorsAndBooks", Author.class);
+	public List<Author> findAuthorsWithBooks() {
+		TypedQuery<Author> q = em.createNamedQuery("findAuthorsWithBooks", Author.class);
 		return q.getResultList();
 	}
 
