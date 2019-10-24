@@ -1,7 +1,7 @@
 package fr.esisar.cs518.library.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,6 @@ public class Author implements Serializable {
 	private static final long serialVersionUID = -9047781109105291658L;
 
 	// ------- Attributes -------
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -29,16 +28,15 @@ public class Author implements Serializable {
 	
 	private String lastName;
 
-	@OneToMany
-	private Collection<Book> books;
+	@OneToMany(mappedBy="author")
+	private List<Book> books;
 
 	// ------- Constructors -------
-	
 	public Author() {
 		super();
 	}
 
-	public Author(Long id, String firstName, String lastName, Collection<Book> books) {
+	public Author(Long id, String firstName, String lastName, List<Book> books) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -46,7 +44,7 @@ public class Author implements Serializable {
 		this.books = books;
 	}
 
-	public Author(String firstName, String lastName, Collection<Book> books) {
+	public Author(String firstName, String lastName, List<Book> books) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -54,7 +52,6 @@ public class Author implements Serializable {
 	}
 	
 	// ------- Getters & Setters -------
-
 	public Long getId() {
 		return id;
 	}
@@ -79,11 +76,11 @@ public class Author implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Collection<Book> getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(Collection<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 	
