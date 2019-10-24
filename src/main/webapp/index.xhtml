@@ -25,6 +25,8 @@
 					<b:dataTable value="#{libraryController.books}" var="l">
 						<b:dataTableColumn value="#{l.idBook}"/>
 						<b:dataTableColumn value="#{l.title}"/>
+						<b:dataTableColumn value="#{l.author.firstName}"/>
+						<b:dataTableColumn value="#{l.author.lastName}"/>
 					</b:dataTable>
 				</b:column>
 			</b:row>
