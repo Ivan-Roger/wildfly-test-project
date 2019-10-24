@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({
@@ -25,6 +26,9 @@ public class Author implements Serializable {
 	private String firstName;
 	
 	private String lastName;
+
+	@OneToOne(mappedBy = "author")
+	private Book book;
 
 	// ------- Constructors -------
 	
@@ -70,9 +74,17 @@ public class Author implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	// ------- Object methods -------
 	
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+	
+	// ------- Object methods -------
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
