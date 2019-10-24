@@ -12,14 +12,29 @@
 	</h:head>
 	
 	<h:body>
-		<h1>Test project</h1>
-		<p>Welcome on this test project !</p>
 		<b:container fluid="true">
 			<b:row>
 				<b:column>
+					<h1>Test project</h1>
+					<p>Welcome on this test project !</p>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column>
+					<h2>Books</h2>
 					<b:dataTable value="#{libraryController.books}" var="l">
 						<b:dataTableColumn value="#{l.idBook}"/>
 						<b:dataTableColumn value="#{l.title}"/>
+					</b:dataTable>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column>
+					<h2>Authors</h2>
+					<b:dataTable value="#{libraryController.authors}" var="a">
+						<b:dataTableColumn value="#{a.id}"/>
+						<b:dataTableColumn value="#{a.firstName}"/>
+						<b:dataTableColumn value="#{a.lastName}"/>
 					</b:dataTable>
 				</b:column>
 			</b:row>

@@ -22,7 +22,7 @@ public class Book implements Serializable {
 	private Long idBook;
 	
 	private String title;
-
+	
 	// ------- Constructors -------
 	public Book() {
 		super();
