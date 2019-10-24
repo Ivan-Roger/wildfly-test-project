@@ -12,8 +12,10 @@ public interface IAuthorLocal {
 	public Author createAuthor(Author author);
 	
 	public Author getAuthorById(Long id);
-	
+
 	public List<Author> findAuthors();
+	
+	public List<Author> findAuthorsAndBooks();
 	
 	public Author updateAuthor(Author author);
 	

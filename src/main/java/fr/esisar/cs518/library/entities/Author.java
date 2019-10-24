@@ -1,6 +1,7 @@
 package fr.esisar.cs518.library.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "findAuthors", query = "SELECT a FROM Author a")
+	@NamedQuery(name = "findAuthors", query = "SELECT a FROM Author a"),
+	@NamedQuery(name = "findAuthorsAndBooks", query = "SELECT DISTINCT a FROM Author a LEFT JOIN FETCH a.books")
 })
 public class Author implements Serializable {
 	private static final long serialVersionUID = -9047781109105291658L;
@@ -27,8 +29,8 @@ public class Author implements Serializable {
 	
 	private String lastName;
 
-	@OneToOne(mappedBy = "author")
-	private Book book;
+	@OneToMany
+	private Collection<Book> books;
 
 	// ------- Constructors -------
 	
@@ -36,17 +38,19 @@ public class Author implements Serializable {
 		super();
 	}
 
-	public Author(Long id, String firstName, String lastName) {
+	public Author(Long id, String firstName, String lastName, Collection<Book> books) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.books = books;
 	}
 
-	public Author(String firstName, String lastName) {
+	public Author(String firstName, String lastName, Collection<Book> books) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.books = books;
 	}
 	
 	// ------- Getters & Setters -------
@@ -74,13 +78,13 @@ public class Author implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public Book getBook() {
-		return book;
+
+	public Collection<Book> getBooks() {
+		return books;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setBooks(Collection<Book> books) {
+		this.books = books;
 	}
 	
 	// ------- Object methods -------

@@ -6,10 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({
@@ -25,25 +23,20 @@ public class Book implements Serializable {
 	
 	private String title;
 	
-	@OneToOne
-	private Author author;
-	
 	// ------- Constructors -------
 	public Book() {
 		super();
 	}
 
-	public Book(Long idBook, String title, Author author) {
+	public Book(Long idBook, String title) {
 		super();
 		this.idBook = idBook;
 		this.title = title;
-		this.author = author;
 	}
 
-	public Book(String title, Author author) {
+	public Book(String title) {
 		super();
 		this.title = title;
-		this.author = author;
 	}
 	
 	// ------- Getters & Setters -------
@@ -61,14 +54,6 @@ public class Book implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public Author getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(Author author) {
-		this.author = author;
 	}
 
 	// ------- Object methods -------

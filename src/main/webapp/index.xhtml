@@ -25,8 +25,6 @@
 					<b:dataTable value="#{libraryController.books}" var="b">
 						<b:dataTableColumn value="#{b.idBook}" label="ID"/>
 						<b:dataTableColumn value="#{b.title}" label="Title"/>
-						<b:dataTableColumn value="#{b.author.firstName}" label="Author first name"/>
-						<b:dataTableColumn value="#{b.author.lastName}" label="Author last name"/>
 					</b:dataTable>
 				</b:column>
 			</b:row>
@@ -37,7 +35,16 @@
 						<b:dataTableColumn value="#{a.id}" label="ID"/>
 						<b:dataTableColumn value="#{a.firstName}" label="First name"/>
 						<b:dataTableColumn value="#{a.lastName}" label="Last name"/>
-						<b:dataTableColumn value="#{a.book.title}" label="Book title"/>
+						<b:dataTableColumn label="Books">
+							<ul>
+								<ui:repeat var="b" value="#{a.books}">
+									<li>
+										#<h:outputText value="#{b.idBook}" />:
+										<h:outputText value="#{b.title}" />
+									</li>
+								</ui:repeat>
+							</ul>
+						</b:dataTableColumn>
 					</b:dataTable>
 				</b:column>
 			</b:row>

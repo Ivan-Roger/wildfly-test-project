@@ -34,13 +34,12 @@ public class LibraryController implements Serializable {
 	}
 
 	public List<Author> getAuthors() {
-		return library.findAuthors();
+		return library.findAuthorsAndBooks();
 	}
 
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
-	
 	
 
 }

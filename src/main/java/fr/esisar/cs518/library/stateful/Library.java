@@ -27,4 +27,8 @@ public class Library {
 		return authorInterface.findAuthors();
 	}
 	
+	public List<Author> findAuthorsAndBooks() {
+		return authorInterface.findAuthorsAndBooks();
+	}
+	
 }
