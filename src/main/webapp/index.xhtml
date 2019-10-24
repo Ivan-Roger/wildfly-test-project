@@ -22,11 +22,11 @@
 			<b:row>
 				<b:column>
 					<h2>Books</h2>
-					<b:dataTable value="#{libraryController.books}" var="l">
-						<b:dataTableColumn value="#{l.idBook}"/>
-						<b:dataTableColumn value="#{l.title}"/>
-						<b:dataTableColumn value="#{l.author.firstName}"/>
-						<b:dataTableColumn value="#{l.author.lastName}"/>
+					<b:dataTable value="#{libraryController.books}" var="b">
+						<b:dataTableColumn value="#{b.idBook}" label="ID"/>
+						<b:dataTableColumn value="#{b.title}" label="Title"/>
+						<b:dataTableColumn value="#{b.author.firstName}" label="Author first name"/>
+						<b:dataTableColumn value="#{b.author.lastName}" label="Author last name"/>
 					</b:dataTable>
 				</b:column>
 			</b:row>
@@ -34,9 +34,9 @@
 				<b:column>
 					<h2>Authors</h2>
 					<b:dataTable value="#{libraryController.authors}" var="a">
-						<b:dataTableColumn value="#{a.id}"/>
-						<b:dataTableColumn value="#{a.firstName}"/>
-						<b:dataTableColumn value="#{a.lastName}"/>
+						<b:dataTableColumn value="#{a.id}" label="ID"/>
+						<b:dataTableColumn value="#{a.firstName}" label="First name"/>
+						<b:dataTableColumn value="#{a.lastName}" label="Last name"/>
 					</b:dataTable>
 				</b:column>
 			</b:row>
